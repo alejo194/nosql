@@ -12,3 +12,6 @@ ycsb压测工具
 
 ##### sharding模式
 参见：https://blog.csdn.net/ilovemilk/article/details/79336951</br>
+
+##### 安装参见官网
+apt-get install dirmngr -y (我安装时少了依赖包)
