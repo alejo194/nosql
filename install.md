@@ -12,6 +12,11 @@ ycsb压测工具
 
 ##### sharding模式
 参见：https://blog.csdn.net/ilovemilk/article/details/79336951</br>
+     https://blog.csdn.net/ilovemilk/article/details/79336951
 
 ##### 安装参见官网
 apt-get install dirmngr -y (我安装时少了依赖包)
+
+
+##### docker 版安装
+参见：https://blog.csdn.net/vincerom/article/details/81145938
