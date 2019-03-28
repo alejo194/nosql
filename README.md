@@ -2,7 +2,7 @@
 #### mongoDB 学习记录
 ```bash
 配置服务器
-mongo -f ...
+mongod -f ...
 mongo --port 34000
 > rs.initiate({
     "_id":"cfg",
