@@ -1,0 +1,1 @@
+chunk:默认64M，在shard server中，MongoDB会把数据分为chunks,每个chunk代表这个shard server内部一部分数据。
