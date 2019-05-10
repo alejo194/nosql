@@ -1,4 +1,4 @@
-
+https://www.cnblogs.com/mushroom/p/4738170.html#three
 ```bash
 127.0.0.1:6380> info
 # Server
