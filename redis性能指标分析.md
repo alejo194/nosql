@@ -30,7 +30,7 @@ blocked_clients:0
 
 # Memory
 used_memory:229408680
-used_memory_human:218.78M   --used_memory和used_memory_human是一样的，有redis分配器分配的内存总量，以字节（byte）为单位，另一以M/G为单位显示
+used_memory_human:218.78M   --used_memory和used_memory_human是一样的，由redis分配器分配的内存总量，以字节（byte）为单位，另一以M/G为单位显示
 used_memory_rss:281231360
 used_memory_rss_human:268.20M  --从操作系统上显示已经分配的内存总量
 used_memory_peak:241806888
@@ -47,7 +47,8 @@ used_memory_lua_human:217.00K
 maxmemory:0
 maxmemory_human:0B
 maxmemory_policy:noeviction
-mem_fragmentation_ratio:1.23
+mem_fragmentation_ratio:1.23  --内存碎片率由use_memory_rss除以user_memory所得到
+（内存碎片率稍大于1是合理的，这个值表示内存碎片率比较低，也说明redis没有发生内存交换。但如果内存碎片率超过1.5，那就说明Redis消耗了实际需要物理内存的150%，其中50%是内存碎片率，这些碎片所占用的内存代表的含义是Redis没有把内存归还给操作系统。若是内存碎片率低于1的话，说明Redis内存分配超出了物理内存，操作系统正在进行内存交换。）
 mem_allocator:jemalloc-4.0.3
 active_defrag_running:0
 lazyfree_pending_objects:0
