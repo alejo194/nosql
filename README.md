@@ -1,4 +1,4 @@
-# mongodb-
+# nosql
 #### mongoDB 学习记录
 ```bash
 配置服务器
