@@ -39,6 +39,20 @@
     创建一个复合索引
     db.collection.createIndex({<field1>:<type>, <field2>:<type2>, ...})
     ****注：不能创建具有散列索引类型的复合索引****
+    
+    products集合
+    {
+     "_id": ObjectId(...),
+     "item": "Banana",
+     "category": ["food", "produce", "grocery"],
+     "location": "4th Street Store",
+     "stock": 4,
+     "type": "cases"
+     }
+     
+     在item和stock字段上创建升序索引
+     > db.products.createIndex({"item":1, "stock":1})
+     
 ##### 3. Multikey Indexes
 ##### 4. Text Indexes
 ##### 5. 2dsphere Indexes
