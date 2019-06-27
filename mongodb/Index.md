@@ -13,18 +13,22 @@
     
     在records集合中的score字段上创建一个升序的索引
     > db.records.createIndex( { score: 1 } )
-    索引规范中字段的值描述了该字段的索引类型。1代表升序，-1代表降序
-    
+    索引规范中字段的值描述了该字段的索引类型。1代表升序，-1代表降序 
     在score字段上创建的索引将支持查询
     > db.records.find({score:2})
     > db.records.find({score:{$gt:10}})
     
     在一个嵌入式字段创建索引
     > db.records.createIndex({"lacation.state":1})
-    
     在location.state字段上创建的索引支持查询
     > db.records.find({"location.state":"CA"})
     > db.records.find({"location.city":"Albany",  "location.state": "NY"})
+    
+    在一个嵌入式文档上创建索引
+    > db.records.createIndex({location:1})
+    下面的查询可以使用location字段上的索引
+    > db.records.find({location:{city:"New York", state:"NY"}})
+    
     
 ##### Compound Indexs
 ##### Multikey Indexes
