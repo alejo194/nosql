@@ -31,8 +31,14 @@
     > db.records.find({location:{city:"New York", state:"NY"}})
     注：当对嵌入的文档执行相等匹配时，字段顺序很重要，并且嵌入的文档必须完全匹配。   
     
-##### 2.Compound Indexs
+##### 2. Compound Indexs
+    MongoDB支持复合索引，其中一个索引结构包含对集合文档中的多个字段[1]的引用。
+    MongoDB对任何复合索引施加32个字段的限制。
+    复合索引支持多个字段的查询
     
+    创建一个复合索引
+    db.collection.createIndex({<field1>:<type>, <field2>:<type2>, ...})
+    ****注：不能创建具有散列索引类型的复合索引****
 ##### 3. Multikey Indexes
 ##### 4. Text Indexes
 ##### 5. 2dsphere Indexes
