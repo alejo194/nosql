@@ -2,7 +2,7 @@
     索引的类型：Single Field Indexes, Compound Indexs, Multikey Indexes, Text Indexes, 2dsphere Indexes, 2d Indexes,
                 geoHaystack Indexes, Hashed Indexes
      
-##### Single Field Indexes
+##### 1. Single Field Indexes
     MongoDB提供了对文档集合中任何字段上的索引的完整支持。默认情况下，所有集合在_id字段上都有一个索引，应用程序和用户可以添加
     额外的索引来支持重要的查询和操作。本文档描述单个字段上的升序/降序索引。
     
@@ -31,11 +31,11 @@
     > db.records.find({location:{city:"New York", state:"NY"}})
     注：当对嵌入的文档执行相等匹配时，字段顺序很重要，并且嵌入的文档必须完全匹配。   
     
-##### Compound Indexs
+##### 2.Compound Indexs
     
-##### Multikey Indexes
-##### Text Indexes
-##### 2dsphere Indexes
-##### 2d Indexes
-##### geoHaystack Indexes
-##### Hashed Indexes
+##### 3. Multikey Indexes
+##### 4. Text Indexes
+##### 5. 2dsphere Indexes
+##### 6. 2d Indexes
+##### 7. geoHaystack Indexes
+##### 8. Hashed Indexes
