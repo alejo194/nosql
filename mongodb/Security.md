@@ -29,4 +29,51 @@
     )
 
     3.4 使用访问控制重新启动MongoDB实例
+    a. 关闭mongod实例
     > db.adminCommand({shutdown: 1})
+    b. 退出mongo shell
+    c. 从客户端重启mongod实例加上--auth命令行选项，如果是配置文件，security.authorization设置
+    mongod --auth --port 27017 --dbpath /var/lib/mongodb
+    
+    3.5 连接并认证用户
+    mongo --port 27017 -u "myUserAdmin" --authenticationDatabase "adimin" -p
+    or 
+    mongo --port 27017
+    > use admin
+    > db.auth("myUserAdmin", "abc123" )
+    
+    3.6 创建一个用户到你的部署
+    use test
+    db.createUser(
+    {
+    user: "myTester",
+    pwd: "xyz123",
+    roles: [ { role: "readWrite", db: "test" },
+             { role: "read", db: "reporting" } ]
+    }
+    )
+    
+    3.7 连接实例并认证myTester
+    mongo --port 27017
+    > use test
+    > db.auth("myTester", "xyz123" )
+    or
+    mongo --port 27017 -u "myTester" --authenticationDatabase "test" -p
+    
+    3.8 插入文档
+    > db.foo.insert( { x: 1, y: 1 } )
+    
+    
+#### 认证
+   1 用户
+   2 认证机制
+   3 企业级认证机制
+   4 内部认证
+     4.1 部署新副本集中Keyfile访问控制
+     4.2 
+     4.3
+     4.4 部署分片集中Keyfile访问控制
+     4.5 在分片集群中强制密钥文件访问控制（停机）
+     4.6 在没有停机的情况下在现有切分集群中强制身份验证
+         
+     
