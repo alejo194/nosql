@@ -75,5 +75,23 @@
       4.4 部署分片集中Keyfile访问控制
       4.5 在分片集群中强制密钥文件访问控制（停机）
       4.6 在没有停机的情况下在现有切分集群中强制身份验证
-         
+         admin.createUser(
+         {
+         user: "admin",
+         pwd: "111",
+         roles: [
+         { role: "clusterAdmin", db: "admin" },
+         { role: "userAdmin", db: "admin" }
+         ]
+         }
+        );
+
+         db.getSiblingDB("mqtt").createUser(
+         {
+         "user": "maxwin",
+         "pwd": "111",
+         "roles": [ { "role" : "readWrite", "db" : "mqtt" },
+               { "role" : "readWrite", "db" : "maxbus" } ]
+         }
+        )
      
