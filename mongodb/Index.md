@@ -1,4 +1,7 @@
 #### MongoDB 索引
+索引支持在MongoDB中高效执行查询。如果没有索引，MongoDB必须执行集合扫描，即扫描集合中的每个文档，以选择那些匹配查询语句的文档。如果查询存在适当的索引，MongoDB可以使用该索引来限制它必须检查的文档数量。</br>
+索引是一种特殊的数据结构[1]，它以一种易于遍历的形式存储集合数据集的一小部分。索引存储特定字段或一组字段的值，按字段的值排序。索引条目的排序支持高效的相等匹配和基于范围的查询操作。此外，MongoDB可以使用索引中的顺序返回排序后的结果。</br>
+
     索引的类型：Single Field Indexes, Compound Indexs, Multikey Indexes, Text Indexes, 2dsphere Indexes, 2d Indexes,
                 geoHaystack Indexes, Hashed Indexes
      
