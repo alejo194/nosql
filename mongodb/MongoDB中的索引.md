@@ -16,7 +16,9 @@
        db.emp.createIndex({"deptno":1, "sal":1})
        "winningPlan":{
              "stage": "FETCH",
-             ......
+             "inputStage":{
+                  "stage": "IXSCAN",
+                  ......
        }
        
 2、索引的类型一： 单键索引 </br>
