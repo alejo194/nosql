@@ -3,6 +3,7 @@
    (1) 默认索引：_id(唯一性的索引) </br>
        db.emp.getIndexes()
    (2)查询：部门号等于10，工资小于3000的文档
+   
        db.emp.find({deptno:{$eq:10},sal:{$lt:3000}}) --->全表扫描
        db.emp.find({deptno:{$eq:10},sal:{$lt:3000}}).explain()
        "winningPlan":{
@@ -11,6 +12,7 @@
        }
        
    (3)创建索引
+   
        db.emp.createIndex({"deptno":1, "sal":1})
        "winningPlan":{
              "stage": "FETCH",
