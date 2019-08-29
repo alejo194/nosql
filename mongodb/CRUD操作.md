@@ -1,6 +1,7 @@
 1.插入文档：insert 如果插入数据的时候，collection还不存在，会自动创建集合
 
 2.查询文档：
+   
     db.collection.find(query,projection)
     query--document类型：可选，使用查询操作符指定查询条件
     projection--document类型：指定使用投影运算符返回的字段省略此参数返回匹配文档中的所有字段
