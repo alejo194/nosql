@@ -1,10 +1,10 @@
 参见：https://blog.csdn.net/eagle89/article/details/80609343
 ##### 集群的监测
-+ 1.监测数据库存储统计信息
++ 1.监测数据库存储统计信息</br>
 db.stats()
-+ 2.查看数据库统计信息
++ 2.查看数据库统计信息</br>
 db.runCommand({serverStatus:1})
-+ 3.检查复制集成员状态
++ 3.检查复制集成员状态</br>
 rs.status()
 ##### 基本运维操作
 + 1.设置和查看慢查询
