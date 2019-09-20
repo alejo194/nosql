@@ -54,3 +54,9 @@ db.runCommand({removeShard:"shard3"})
 db.runCommand("flushRouterConfig")
 ```
 + 7.导入导出数据
+
++ 8.compact
+```bash
+# 对集合执行compact，可以立即free的碎片空间
+db.runCommand({compact:"maxbus"})
+```
