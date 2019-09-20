@@ -60,3 +60,8 @@ db.runCommand("flushRouterConfig")
 # 对集合执行compact，可以立即free的碎片空间
 db.runCommand({compact:"maxbus"})
 ```
+
++ 9.tcmalloc 最多会 cache min（1GB，1/8 * system_memory） 的内存,查看cache使用情况
+```bash
+db.serverStatus().tcmalloc
+```
