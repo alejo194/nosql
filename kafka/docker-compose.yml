@@ -1,0 +1,24 @@
+version: '2'
+services:
+  kafkamanager:
+    image: kafkamanager/kafka-manager
+    hostname: kafkamanager
+    container_name: kafkamanager
+    environment:
+      - ZK_HOSTS=*.*.*.*:2181,*.*.*.*:2181,*.*.*.*:2181
+      - KAFKA_MANAGER_AUTH_ENABLED=true
+      - KAFKA_MANAGER_USERNAME=maxwin
+      - KAFKA_MANAGER_PASSWORD=maxwin.maxwin
+    restart: always
+    extra_hosts:
+      - "coreserv-a:*.*.*.*"
+      - "coreserv-b:*.*.*.*"
+      - "coreserv-c:*.*.*.*"
+    network_mode: bridge
+    ports:
+      - 30000:9000
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "10"
