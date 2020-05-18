@@ -1,1 +1,29 @@
-
+version: '2'
+services:
+  consul-c:
+    image: consul
+    container_name: consul-c
+    network_mode: host
+    environment:
+      - 'CONSUL_LOCAL_CONFIG={"skip_leave_on_interrupt": true}'
+    ports:
+      - 8300:8300
+      - 8301:8301
+      - 8301:8301/udp
+      - 8302:8302
+      - 8302:8302/udp
+      - 8400:8400
+      - 8500:8500
+      - 53:53/udp
+    volumes:
+      - ./consul/config:/consul/config
+      - ./consul/data:/consul/data
+    command: "agent -node=c-int11 -bind=****  -retry-join=****  -client=0.0.0.0 -datacenter=mw"
+    restart: always
+    #logging:
+    #  driver: "json-file"
+    #  options:
+    #    max-size: "50m"
+    #    max-file: "10"
+    logging:
+      driver: "none"
