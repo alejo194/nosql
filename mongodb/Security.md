@@ -87,6 +87,8 @@
       4.4 部署分片集中Keyfile访问控制
       4.5 在分片集群中强制密钥文件访问控制（停机）
       4.6 在没有停机的情况下在现有切分集群中强制身份验证(参考官网)
+         db.createUser({user:"admin",pwd:"111",roles:["root"] }) 超级管理员用户
+         参考：https://www.cnblogs.com/swordfall/p/10841418.html
          admin.createUser(
          {
          user: "admin",
