@@ -1,0 +1,91 @@
+version: '3'
+services:
+   cassandra-1:
+     image: cassandra:3
+     volumes:
+       - cassandra:/var/lib/cassandra
+#     environment:
+#       CASSANDRA_LISTEN_ADDRESS: "$(hostname --ip-address | cut -d " " -f1)"
+     ports:
+       - 7000
+       - 9042:9042
+     deploy:
+       replicas: 1
+       restart_policy:
+          condition: on-failure
+       update_config:
+         parallelism: 2
+         delay: 10s
+#        placement:
+#          constraints:
+#            - node.role == manager
+     networks:
+       - test
+     logging:
+       driver: "json-file"
+       options:
+         max-size: "50m"
+         max-file: "10"
+   kong:
+     image: kong
+     ports:
+       - "8000:8000"
+       - "8443:8443"
+       - "8001:8001"
+       - "7946:7946"
+       - "7946:7946/udp"
+     deploy:
+       replicas: 1
+       restart_policy:
+         condition: on-failure
+       update_config:
+         parallelism: 2
+         delay: 10s
+#        placement:
+#          constraints:
+#            - node.role == manager
+     environment:
+       - KONG_CASSANDRA_CONTACT_POINTS= tz_cassandra-1
+       - KONG_DATABASE= cassandra
+       - KONG_PG_HOST= tz_cassandra-1
+#     volumes:
+#       - /usr/share/zoneinfo/Asia/Taipei:/usr/share/zoneinfo/Asia/Taipei
+#       - /usr/share/zoneinfo/Asia/Taipei:/etc/localtime/
+#       - /etc/timezone:/etc/timezone
+     networks:
+       - test
+     #restart: always
+     logging:
+       driver: "json-file"
+       options:
+         max-size: "50m"
+         max-file: "10"
+   kong-dashboard:
+     image: pgbi/kong-dashboard
+     ports:
+       - 8080:8080
+     deploy:
+       replicas: 1
+       restart_policy:
+         condition: on-failure
+       update_config:
+         parallelism: 2
+         delay: 10s
+     networks:
+       - test
+#     volumes:
+#       - /usr/share/zoneinfo/Asia/Taipei:/usr/share/zoneinfo/Asia/Taipei
+#       - /usr/share/zoneinfo/Asia/Taipei:/etc/localtime/
+#       - /etc/timezone:/etc/timezone
+     #restart: always
+     logging:
+       driver: "json-file"
+       options:
+         max-size: "50m"
+         max-file: "10"
+
+networks:
+  test:
+    external: true
+volumes:
+  cassandra:
