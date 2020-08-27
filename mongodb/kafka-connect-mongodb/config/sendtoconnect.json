@@ -26,7 +26,6 @@
 "mongodb.collection.service-chat": "servicechat",
 "mongodb.post.processor.chain":"at.grahsl.kafka.connect.mongodb.processor.DocumentIdAdder",
 "mongodb.replace.one.strategy":"at.grahsl.kafka.connect.mongodb.writemodel.filter.strategy.ReplaceOneBusinessKeyFilterStrategy",
-"header.converter":"org.apache.kafka.connect.storage.StringConverter",
 "errors.log.enable":true,
 "errors.log.include.messages":true
      }
