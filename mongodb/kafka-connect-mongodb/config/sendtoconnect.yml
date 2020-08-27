@@ -1,0 +1,33 @@
+{
+"name": "mdb-sink",
+"config": {
+"key.converter":"org.apache.kafka.connect.json.JsonConverter",
+"key.converter.schemas.enable": false,
+"value.converter":"org.apache.kafka.connect.json.JsonConverter",
+"value.converter.schemas.enable": false,
+"connector.class": "at.grahsl.kafka.connect.mongodb.MongoDbSinkConnector",
+"topics": "service-chat,vt.gps",
+"tasks.max":"3",
+"mongodb.connection.uri": "mongodb://maxwin:111@192.168.101.72:34004,192.168.101.73:34004,192.168.101.74:34004/maxbus?w=1&journal=true",
+"mongodb.post.processor.chain":"at.grahsl.kafka.connect.mongodb.processor.field.renaming.RenameByMapping",
+###uuid,"_id" : ObjectId("5f3264c6083e0e4fb9225691")###
+"mongodb.document.id.strategy": "at.grahsl.kafka.connect.mongodb.processor.id.strategy.BsonOidStrategy",
+###uuid,如何有组合键，_id会是组合键###
+###增加时间戳###
+"mongodb.writemodel.strategy": "at.grahsl.kafka.connect.mongodb.writemodel.strategy.UpdateOneTimestampsStrategy",
+###增加时间戳###
+###start组合键_id###
+"mongodb.document.id.strategy": "at.grahsl.kafka.connect.mongodb.processor.id.strategy.PartialValueStrategy",
+"mongodb.key.projection.list": "type,carid",
+"mongodb.key.projection.type": "whitelist",
+"mongodb.writemodel.strategy": "at.grahsl.kafka.connect.mongodb.writemodel.strategy.ReplaceOneBusinessKeyStrategy",
+###end组合键_id###
+"mongodb.collection.vt.gps": "gps202008",
+"mongodb.collection.service-chat": "servicechat",
+"mongodb.post.processor.chain":"at.grahsl.kafka.connect.mongodb.processor.DocumentIdAdder",
+"mongodb.replace.one.strategy":"at.grahsl.kafka.connect.mongodb.writemodel.filter.strategy.ReplaceOneBusinessKeyFilterStrategy",
+"header.converter":"org.apache.kafka.connect.storage.StringConverter",
+"errors.log.enable":true,
+"errors.log.include.messages":true
+     }
+}
