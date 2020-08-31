@@ -16,6 +16,11 @@
 
 3.更新文档：
 
+
+    db.collection.updateOne(<filter>, <update>, <options>)
+    db.collection.updateMany(<filter>, <update>, <options>)
+    db.collection.replaceOne(<filter>, <update>, <options>)
+
 4.删除文档：
 
 5.批处理：
