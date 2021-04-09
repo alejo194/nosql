@@ -8,3 +8,4 @@
 # client list
 其中idbe（以秒计算的空闲时长）
 ```
+配置修改 timeout, tcp-keepalive 
